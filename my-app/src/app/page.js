@@ -1,19 +1,18 @@
-// src/app/page.jsx
-// No need to import or render Sidebar or Navbar here!
-// They are handled by the RootLayout -> MainLayoutClient.
-
-// import Weather from '@/components/sections/Weather'; // Assuming these are JS/JSX too
-// import GoogleSearch from '@/components/sections/GoogleSearch';
-// import AppGrid from '@/components/sections/AppGrid';
+"use client";
+import Weather from "@/Components/sections/Weather";
+import GoogleSearch from "@/Components/sections/GoogleSearch";
+import AppGrid from "@/components/sections/AppGrid";
 
 export default function HomePage() {
   return (
     // The <main> tag with padding is inside MainLayoutClient
-    <div className="container mx-auto p-4"> {/* Example container */}
-      {/* <Weather />
+    <div className="w-350 mx-auto space-y-6">
+      {" "}
+      {/* Centered wrapper */}
+      <Weather />
+      {/* GoogleSearchInput will now expand to the width of this wrapper */}
       <GoogleSearch />
-      <AppGrid /> */}
-      {/* ... other page content */}
+            <AppGrid /> {/* <-- Use the AppGrid component */}
     </div>
   );
 }
