@@ -1,7 +1,7 @@
 "use client";
 import Weather from "@/Components/sections/Weather";
 import GoogleSearch from "@/Components/sections/GoogleSearch";
-import AppGrid from "@/components/sections/AppGrid";
+import AppGrid from "@/Components/sections/AppGrid";
 
 export default function HomePage() {
   return (

@@ -2,8 +2,8 @@
 
 import { Inter } from 'next/font/google';
 import './globals.css';
-import MainLayoutClient from '@/components/layout/MainLayoutClient';
-import LockScreenWrapper from '@/components/auth/LockScreenWrapper';
+import MainLayoutClient from '@/Components/layout/MainLayoutClient';
+import LockScreenWrapper from '@/Components/auth/LockScreenWrapper';
 
 
 const inter = Inter({ subsets: ['latin'] });
