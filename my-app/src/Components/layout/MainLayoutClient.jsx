@@ -1,14 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import Navbar from "@/components/layout/Navbar";
+import Navbar from "@/Components/layout/Navbar";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from "@/components/ui/sheet"; 
+} from "@/Components/ui/sheet"; 
 import Link from "next/link";
 
 export default function MainLayoutClient({ children }) {
