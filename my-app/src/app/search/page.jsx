@@ -49,7 +49,9 @@ function SearchResults() {
             try {
                 const errorData = await response.json();
                 errorDetails += ` - ${errorData?.error?.message || response.statusText}`;
-            } catch (parseError)
+            } catch (parseError){
+              
+            }
             throw new Error(errorDetails);
         }
         const data = await response.json();
