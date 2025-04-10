@@ -8,7 +8,7 @@ import { FiSearch } from 'react-icons/fi';
 import { ScaleLoader } from 'react-spinners';
 import { DateTime } from 'luxon'; 
 
-const NEWS_API_KEY = process.env.NEXT_PUBLIC_NEWS_API_KEY;
+const NEWS_API_KEY = "3aa86bc84f774542bd0cc1e01a3589c4";
 const NEWS_API_BASE = 'https://newsapi.org/v2';
 const DEFAULT_COUNTRY = 'us';
 const PAGE_SIZE = 12;
@@ -209,8 +209,8 @@ function NewsSearcher() {
 
             {loading && (
                 <div className="flex flex-col items-center justify-center text-center p-10">
-                    <ScaleLoader color={"#4f46e5"} loading={loading} height={35} width={4} radius={2} margin={2} />
-                    <p className="mt-4 text-gray-600 dark:text-gray-400">Fetching news...</p>
+                    <ScaleLoader color={"#000000"} loading={loading} height={35} width={4} radius={2} margin={2} />
+                    <p className="mt-4 text-black dark:text-gray-400">Fetching news...</p>
                 </div>
             )}
 

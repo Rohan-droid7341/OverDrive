@@ -22,7 +22,7 @@ const DEFAULT_USERNAME = 'Rohan-droid7341'; // <-- REPLACE 'your-github-username
 // --- GitHub API Fetching Logic (Keep as before) ---
 
 const GITHUB_API_BASE = 'https://api.github.com';
-const GITHUB_PAT = process.env.NEXT_PUBLIC_GITHUB_PAT; // WARNING: Client-side exposure risk
+const GITHUB_PAT = "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"; // WARNING: Client-side exposure risk
 
 const createHeaders = () => { /* ... (keep createHeaders function as before) ... */
     const headers = {

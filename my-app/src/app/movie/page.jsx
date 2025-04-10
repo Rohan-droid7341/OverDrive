@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { FiSearch, FiFilm, FiStar, FiInfo } from 'react-icons/fi';
 import { ScaleLoader } from 'react-spinners';
 
-const OMDB_API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
+const OMDB_API_KEY = "79729d00";
 const OMDB_API_BASE = 'https://www.omdbapi.com/';
 const DEFAULT_MOVIE_QUERY = "Minecraft"; 
 

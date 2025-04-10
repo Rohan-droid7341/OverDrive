@@ -393,8 +393,8 @@ function CodeforcesProfileSearcher() {
 
       {loading && (
         <div className="flex flex-col items-center justify-center text-center p-10">
-            <ScaleLoader color={"#3b82f6"} loading={loading} height={35} width={4} radius={2} margin={2} />
-            <p className="mt-4 text-gray-600 dark:text-gray-400">
+            <ScaleLoader color={"#000000"} loading={loading} height={35} width={4} radius={2} margin={2} />
+            <p className="mt-4 text-black dark:text-gray-400">
                 {problems === null ? 'Loading problemset data...' : `Loading profile for "${targetHandle}"...`}
             </p>
         </div>

@@ -16,8 +16,8 @@ function SearchResults() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
-  const cxId = process.env.NEXT_PUBLIC_GOOGLE_CX_ID;
+  const apiKey = "AIzaSyBzWuVM52ANX9wlSTAErJGFI6fnVk92jfU" ;
+  const cxId = "d65b586465f37498b";
 
   useEffect(() => {
 
@@ -50,7 +50,7 @@ function SearchResults() {
                 const errorData = await response.json();
                 errorDetails += ` - ${errorData?.error?.message || response.statusText}`;
             } catch (parseError){
-              
+
             }
             throw new Error(errorDetails);
         }
@@ -77,12 +77,12 @@ function SearchResults() {
 
   return (
     <div className="container mx-auto p-4 md:p-6">
-        <h1 className="text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-200">
-            Search Results for: <span className="text-blue-600 dark:text-blue-400 break-words">{searchQuery}</span>
+        <h1 className="text-2xl font-extrabold mb-4  text-black dark:text-gray-200">
+            Search Results for: <span className="text-amber-300 dark:text-blue-400 break-words">{searchQuery}</span>
         </h1>
 
         <div className="mb-4">
-            <Link href="/" className="text-blue-600 hover:underline dark:text-blue-400">
+            <Link href="/" className="text-black font-bold text-1xl bg-amber-100 hover:underline dark:text-blue-400">
                ← Back to Home
             </Link>
         </div>

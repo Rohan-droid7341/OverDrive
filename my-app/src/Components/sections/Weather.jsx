@@ -15,7 +15,7 @@ export default function Weather() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
+  const apiKey = "20f0c7c93f2590a165a21dcf2d975ad6" ;
 
   useEffect(() => {
     setFormattedDate(DateTime.now().toFormat("cccc, dd LLLL yyyy"));
