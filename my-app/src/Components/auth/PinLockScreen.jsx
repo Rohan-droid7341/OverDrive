@@ -1,14 +1,12 @@
-// src/components/auth/PinLockScreen.jsx
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { FiDelete } from "react-icons/fi";
-import { DateTime } from "luxon"; // Ensure installed: npm install luxon
+import { DateTime } from "luxon"; 
 
 const CORRECT_PIN = "1234";
 const PIN_LENGTH = 4;
 
-// Simple Clock Component
 function Clock() {
   const [time, setTime] = useState(DateTime.now());
   useEffect(() => {
@@ -17,9 +15,8 @@ function Clock() {
   }, []);
 
   return (
-    <div className="text-center text-black backdrop-shadow-lg">
+    <div className="text-center text-blue-100 backdrop-shadow-lg">
       {" "}
-      {/* Add subtle shadow */}
       <div className="text-6xl md:text-7xl font-thin tracking-wider">
         {time.toFormat("hh:mm")}
         <span className="text-3xl md:text-4xl align-top ml-1 opacity-80">
@@ -33,8 +30,6 @@ function Clock() {
   );
 }
 
-// Main Lock Screen Component
-// Accept backgroundImageUrl as a prop
 export default function PinLockScreen({ onUnlock, backgroundImageUrl }) {
   const [pinInput, setPinInput] = useState("");
   const [error, setError] = useState("");
@@ -42,7 +37,6 @@ export default function PinLockScreen({ onUnlock, backgroundImageUrl }) {
   const [isAwake, setIsAwake] = useState(false);
   const inputRef = useRef(null);
 
-  // Dynamic background style
   const backgroundStyle = {
     backgroundImage: `url(${backgroundImageUrl})`,
     backgroundSize: "cover",
@@ -59,7 +53,6 @@ export default function PinLockScreen({ onUnlock, backgroundImageUrl }) {
     if (!isAwake) setIsAwake(true);
   };
 
-  // Input handlers remain largely the same, but check isAwake
   const handleInputChange = (e) => {
     if (!isAwake) return;
     const value = e.target.value.replace(/[^0-9]/g, "");
@@ -99,33 +92,30 @@ export default function PinLockScreen({ onUnlock, backgroundImageUrl }) {
   };
 
   return (
-    // Main container with background image style
     <div
       style={backgroundStyle}
       className="fixed inset-0 z-50 flex flex-col items-center justify-center text-black p-4 overflow-hidden" // Added overflow-hidden
-      onClick={handleWakeUp} // Wake up triggers anywhere initially
+      onClick={handleWakeUp} 
     >
-      {/* Blur Overlay - This div covers the background and applies blur when awake */}
-      {/* Added a subtle dark tint for better contrast when blurred */}
+    
       <div
         className={`absolute inset-0 w-full h-full transition-all duration-700 ease-in-out ${
           isAwake
-            ? "backdrop-blur-md  bg-opacity-30" // Apply blur and slight dark overlay when awake
-            : "backdrop-blur-none bg-opacity-0" // No blur, no overlay when idle
+            ? "backdrop-blur-md  bg-opacity-30" 
+            : "backdrop-blur-none bg-opacity-0" 
         }`}
       ></div>
 
-      {/* Temporary PIN Display (Top Right) - REMOVE FOR PRODUCTION */}
+
       <div
-        className={`absolute top-4 right-4 text-2xl font-bold bg-opacity-50 bg-amber-400 p-1 rounded transition-opacity duration-700 z-20 ${
+        className={`absolute top-4 right-4 text-2xl font-bold bg-opacity-50 bg-amber-400 p-1  rounded transition-opacity duration-700 z-20 ${
           isAwake ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
         PIN: {CORRECT_PIN}
       </div>
 
-      {/* Clock Display - Fades out when awake */}
-      {/* Positioned absolutely, higher z-index than blur overlay */}
+   
       <div
         className={`absolute top-1/4 left-1/2 transform -translate-x-1/2 transition-opacity duration-500 ease-in-out z-10 ${
           !isAwake ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -134,13 +124,11 @@ export default function PinLockScreen({ onUnlock, backgroundImageUrl }) {
         <Clock />
       </div>
 
-      {/* PIN Entry Section - Fades in when awake */}
-      {/* Centered, higher z-index than blur overlay */}
       <div
         className={`relative z-10 flex flex-col items-center transition-opacity duration-500 ease-in-out ${
           isAwake ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
-        onClick={(e) => e.stopPropagation()} // Prevent clicks here from bubbling to main div
+        onClick={(e) => e.stopPropagation()} 
       >
         <h1 className="text-2xl font-light mb-4">Enter PIN</h1>
         <div className={`flex space-x-3 mb-4 ${shake ? "animate-shake" : ""}`}>
@@ -197,19 +185,17 @@ export default function PinLockScreen({ onUnlock, backgroundImageUrl }) {
         </div>
       </div>
 
-      {/* Idle State Prompt - Fades out when awake */}
-      {/* Positioned absolutely, higher z-index than blur overlay */}
+    
       <div
         className={`absolute bottom-10 text-center transition-opacity duration-500 ease-in-out z-10 ${
           !isAwake ? "opacity-70" : "opacity-0 pointer-events-none"
         }`}
       >
-        <p className="text-2xl font-extrabold backdrop-shadow-md">
+        <p className="text-2xl font-extrabold text-white backdrop-shadow-md">
           Click anywhere to unlock
         </p>
       </div>
 
-      {/* Shake Animation CSS */}
       <style jsx global>{`
         @keyframes shake {
           0%,

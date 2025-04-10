@@ -33,7 +33,6 @@ export default function Navbar({ toggleSidebar }) {
 
       <div className="text-xs sm:text-sm md:text-base font-mono">{time}</div>
 
-      {/* Placeholder for Login/User Info */}
       <div>
          <button className="px-3 py-1 rounded hover:bg-gray-700">Login</button>
       </div>

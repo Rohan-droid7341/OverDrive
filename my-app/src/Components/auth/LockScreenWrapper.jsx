@@ -1,12 +1,11 @@
-// src/components/auth/LockScreenWrapper.jsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
 import PinLockScreen from './PinLockScreen';
 
 const SESSION_STORAGE_KEY = 'app_unlocked';
-// Define your background image URL here
-const LOCK_SCREEN_BACKGROUND_URL = "/images/your-background-image.jpg"; // <-- CHANGE THIS PATH
+
+const LOCK_SCREEN_BACKGROUND_URL = "/images/your-background-image.jpg"; 
 
 export default function LockScreenWrapper({ children }) {
   const [isLocked, setIsLocked] = useState(() => {
@@ -30,8 +29,7 @@ export default function LockScreenWrapper({ children }) {
   }, []);
 
   if (isLocked) {
-    // Pass the background image URL as a prop
-    return <PinLockScreen onUnlock={handleUnlock} backgroundImageUrl={"https://4kwallpapers.com/images/walls/thumbs_3t/21907.jpg"} />;
+    return <PinLockScreen onUnlock={handleUnlock} backgroundImageUrl={"lock.jpg"} />;
   }
 
   return <>{children}</>;

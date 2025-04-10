@@ -1,12 +1,10 @@
-// src/components/sections/Weather.jsx
-'use client'; // Needs client-side fetching and date formatting
+'use client'; 
 
 import React, { useState, useEffect } from 'react';
-import { DateTime } from 'luxon'; // For date formatting (ensure installed)
-import { FiMapPin } from 'react-icons/fi'; // Location pin icon
+import { DateTime } from 'luxon'; 
+import { FiMapPin } from 'react-icons/fi'; 
 
-// --- Configuration ---
-// You might want to make CITY dynamic later (e.g., based on user location/setting)
+
 const CITY = "Patiala";
 const UNITS = "metric";
 // ---------------------
@@ -20,7 +18,6 @@ export default function Weather() {
   const apiKey = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY;
 
   useEffect(() => {
-    // Format the current date once when the component mounts
     setFormattedDate(DateTime.now().toFormat("cccc, dd LLLL yyyy"));
 
     if (!apiKey) {
@@ -54,12 +51,10 @@ export default function Weather() {
     };
 
     fetchWeather();
-     // No need for interval fetching for this design unless specifically required
 
-  }, [apiKey]); // Dependency array includes apiKey
+  }, [apiKey]); 
 
 
-  // --- Rendering Logic ---
 
   if (error) {
     return (
@@ -70,7 +65,6 @@ export default function Weather() {
   }
 
   if (loading || !weatherData) {
-    // Simple text loading, styled similarly to the final component
     return (
        <div className="flex items-center justify-between p-3 px-5 rounded-xl shadow-lg bg-gradient-to-r from-blue-500 to-blue-600 text-white animate-pulse">
          <div className="h-6 bg-blue-400 rounded w-24"></div>
@@ -81,17 +75,14 @@ export default function Weather() {
     );
   }
 
-  // Destructure needed data
   const { name } = weatherData;
   const { temp } = weatherData.main;
   const { description, icon } = weatherData.weather[0];
 
-  // Use 4x size for better quality if available, fallback to 2x
   const iconUrl = `https://openweathermap.org/img/wn/${icon}@4x.png`;
-  const unitSymbol = UNITS === 'metric' ? '°' : '°F'; // Just the degree symbol
+  const unitSymbol = UNITS === 'metric' ? '°' : '°F'; 
 
   return (
-    // Main container with gradient, rounded corners, padding, flex layout, and white text
     <div className="flex items-center justify-between p-3 px-5 rounded-xl shadow-lg bg-gradient-to-r from-blue-400 to-blue-600 text-white">
 
       <div className="flex flex-col items-start">
@@ -99,10 +90,8 @@ export default function Weather() {
         <span className="text-5xl font-bold">{Math.round(temp)}{unitSymbol}</span>
       </div>
 
-      {/* Vertical Divider */}
       <div className="border-l border-white/50 h-10 self-center mx-4"></div>
 
-      {/* Middle Section: Date & Location */}
       <div className="flex flex-col items-start text-sm">
         <span>{formattedDate}</span>
         <span className="flex items-center mt-1">
@@ -110,15 +99,11 @@ export default function Weather() {
         </span>
       </div>
 
-      {/* Right Section: Weather Icon */}
-      {/* ml-auto pushes the icon to the far right */}
       <div className="ml-auto pl-4">
-         {/* Use a larger icon size */}
         <img
           src={iconUrl}
           alt={description}
-          className="w-16 h-19 md:w-30 md:h-20 object-contain" // Use object-contain if needed
-          // Optional: Add fallback for 4x icon if it doesn't load
+          className="w-16 h-19 md:w-30 md:h-20 object-contain" 
           onError={(e) => { e.currentTarget.src = `https://openweathermap.org/img/wn/${icon}@2x.png`; }}
         />
       </div>

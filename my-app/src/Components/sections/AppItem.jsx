@@ -1,60 +1,68 @@
-// src/components/sections/AppItem.jsx
 import React from 'react';
-import Link from 'next/link'; // Import Next Link
+import Link from 'next/link';
 
-// ... (PlaceholderIcon if you are using it) ...
+export default function AppItem({ label, href, IconComponent }) {
+  if (!IconComponent) {
+    console.warn(`IconComponent is missing for label: ${label}`);
+  }
 
-export default function AppItem({ label, href = "#" }) {
+  return (
+    <Link href={href || '#'} legacyBehavior>
+      <a className="
+          relative {/* Needed for absolute positioning of background */}
+          block {/* Ensure it takes up grid space */}
+          p-4 md:p-6
+          rounded-xl
+          overflow-hidden {/* Clip corners for background */}
+          shadow-lg hover:shadow-xl
+          transition-all duration-200 ease-in-out
+          transform hover:scale-[1.03]
+          group
+          aspect-square
+          text-center
+      ">
 
-    const isInternal = href.startsWith('/'); // Check if it's an internal route
+        <div className="
+            absolute inset-0
+            w-full h-full
+             bg-opacity-30 {/* Translucent Background */}
+            backdrop-blur-sm {/* Apply blur HERE */}
+            border border-white border-opacity-20 {/* Apply border HERE */}
+            rounded-xl {/* Match parent rounding */}
+            group-hover:bg-opacity-40 {/* Hover effect on background */}
+            transition-colors duration-200
+            z-0 {/* Ensure it's behind the content */}
+        "></div>
 
-    const content = (
-        <>
-            {/* <PlaceholderIcon /> */}
-            <span className="text-xs sm:text-sm font-medium text-gray-800 dark:text-gray-200">
-                {label}
-            </span>
-        </>
-    );
 
-    const commonClasses = `
-        bg-white dark:bg-gray-800
-        p-3 md:p-4
-        rounded-lg
-        shadow-sm
-        flex flex-col items-center justify-center
-        text-center
-        aspect-square
-        cursor-pointer
-        hover:bg-gray-100 dark:hover:bg-gray-700
-        transition duration-150 ease-in-out
-        border border-gray-200 dark:border-gray-700
-        focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1
-      `;
+        <div className="
+            relative z-10
+            hAh-full {/* Take full height of parent */}
+            flex flex-col items-center justify-center
+        ">
+          {IconComponent && (
+            <IconComponent className="
+                text-3xl sm:text-4xl md:text-5xl
+                mb-2 md:mb-3
+                text-white {/* Solid white color */}
+                group-hover:text-gray-100 {/* Optional subtle hover */}
+                transition-colors duration-200
+            " />
+          )}
+          {!IconComponent && <div className="w-10 h-10 mb-2 bg-gray-400 rounded"></div>}
 
-    if (isInternal) {
-        // Use Next.js Link for internal navigation
-        return (
-            <Link href={href} className={commonClasses}>
-                {content}
-            </Link>
-        );
-    } else {
-        // Use a standard anchor tag for external links or placeholders
-        // Or handle with onClick for placeholders
-        return (
-            <a
-                href={href}
-                // Open external links in new tab safely
-                target={href !== "#" ? "_blank" : undefined}
-                rel={href !== "#" ? "noopener noreferrer" : undefined}
-                className={commonClasses}
-                onClick={(e) => { if (href === '#') { e.preventDefault(); alert(`Clicked: ${label} (No link defined)`); } }}
-                role="button"
-                tabIndex={0}
-            >
-                {content}
-            </a>
-        );
-    }
+          <span className="
+              text-xs sm:text-sm
+              font-medium
+              text-white {/* Solid white color */}
+              group-hover:text-gray-100 {/* Optional subtle hover */}
+              transition-colors duration-200
+              line-clamp-1
+          ">
+            {label}
+          </span>
+        </div>
+      </a>
+    </Link>
+  );
 }

@@ -8,7 +8,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetDescription,
-} from "@/components/ui/sheet"; // Import Shadcn Sheet components
+} from "@/components/ui/sheet"; 
 import Link from "next/link";
 
 export default function MainLayoutClient({ children }) {
@@ -18,7 +18,6 @@ export default function MainLayoutClient({ children }) {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  // Function to close sidebar (useful for links inside sidebar)
   const closeSidebar = () => {
     setIsSidebarOpen(false);
   };
@@ -27,12 +26,10 @@ export default function MainLayoutClient({ children }) {
     <>
       <Navbar toggleSidebar={toggleSidebar} />
 
-      {/* Sidebar using Shadcn Sheet component */}
 
       <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
         <SheetContent side="left">
           {" "}
-          {/*from left*/}
           <SheetHeader>
             <SheetTitle>Navigation</SheetTitle>
             <SheetDescription>Select a destination.</SheetDescription>
@@ -50,7 +47,6 @@ export default function MainLayoutClient({ children }) {
                   Home / Dashboard
                 </Link>
               </li>
-              {/* Add more navigation links as needed */}
               <li className="mb-2">
                 <Link href="/settings" onClick={closeSidebar} className="block p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-800">
                   Settings
